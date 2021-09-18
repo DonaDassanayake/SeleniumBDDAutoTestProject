@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumBDDAutoTestProject", "SeleniumBDDAuto.Tests\SeleniumBDDAutoTestProject.csproj", "{5079FD62-CC71-4894-87A0-6DE004BDC28B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5079FD62-CC71-4894-87A0-6DE004BDC28B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5079FD62-CC71-4894-87A0-6DE004BDC28B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5079FD62-CC71-4894-87A0-6DE004BDC28B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5079FD62-CC71-4894-87A0-6DE004BDC28B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {31E8546F-CB22-411F-B273-A1B8183A1F73}
+	EndGlobalSection
+EndGlobal
