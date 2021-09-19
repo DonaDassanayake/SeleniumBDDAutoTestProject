@@ -1,5 +1,5 @@
 ﻿Feature: Login
-	Simple Login Tests
+	Login Tests
 
 @login
 Scenario: Successfull Login with valid credentials
