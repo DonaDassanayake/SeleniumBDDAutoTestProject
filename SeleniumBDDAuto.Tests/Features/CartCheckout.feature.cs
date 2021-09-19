@@ -91,7 +91,7 @@ namespace SeleniumBDDAuto.Tests.Features
             testRunner.CollectScenarioErrors();
         }
         
-        public virtual void AddSingleItemToShoppingCartAndCheckout(string menuName, string itemName, string[] exampleTags)
+        public virtual void AddSingleItemToShoppingCartAndCheckout(string menuName, string itemNumber, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "items",
@@ -103,7 +103,7 @@ namespace SeleniumBDDAuto.Tests.Features
             string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("menuName", menuName);
-            argumentsOfScenario.Add("itemName", itemName);
+            argumentsOfScenario.Add("itemNumber", itemNumber);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add single item to shopping cart and checkout", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 5
 this.ScenarioInitialize(scenarioInfo);
@@ -129,7 +129,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("I login with valid credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 7
- testRunner.And(string.Format("I add an item - \'{0}\' in the \'{1}\' menu to shopping cart", itemName, menuName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("I add an item - \'{0}\' in the \'{1}\' menu to shopping cart", itemNumber, menuName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 8
  testRunner.When("I proceed to checkout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -151,11 +151,11 @@ this.ScenarioInitialize(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("shoppingcart")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Dresses")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:menuName", "Dresses")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:itemName", "item1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:itemNumber", "1")]
         public virtual void AddSingleItemToShoppingCartAndCheckout_Dresses()
         {
 #line 5
-this.AddSingleItemToShoppingCartAndCheckout("Dresses", "item1", ((string[])(null)));
+this.AddSingleItemToShoppingCartAndCheckout("Dresses", "1", ((string[])(null)));
 #line hidden
         }
         
@@ -166,15 +166,15 @@ this.AddSingleItemToShoppingCartAndCheckout("Dresses", "item1", ((string[])(null
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("shoppingcart")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "T-shirts")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:menuName", "T-shirts")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:itemName", "item2")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:itemNumber", "1")]
         public virtual void AddSingleItemToShoppingCartAndCheckout_T_Shirts()
         {
 #line 5
-this.AddSingleItemToShoppingCartAndCheckout("T-shirts", "item2", ((string[])(null)));
+this.AddSingleItemToShoppingCartAndCheckout("T-shirts", "1", ((string[])(null)));
 #line hidden
         }
         
-        public virtual void AddMultipleItemsToShoppingCartAndCheckout(string menuName1, string itemName1, string menuName2, string itemName2, string[] exampleTags)
+        public virtual void AddMultipleItemsToShoppingCartAndCheckout(string menuName1, string itemNumber1, string menuName2, string itemNumber2, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "items",
@@ -186,9 +186,9 @@ this.AddSingleItemToShoppingCartAndCheckout("T-shirts", "item2", ((string[])(nul
             string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("menuName1", menuName1);
-            argumentsOfScenario.Add("itemName1", itemName1);
+            argumentsOfScenario.Add("itemNumber1", itemNumber1);
             argumentsOfScenario.Add("menuName2", menuName2);
-            argumentsOfScenario.Add("itemName2", itemName2);
+            argumentsOfScenario.Add("itemNumber2", itemNumber2);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add multiple items to shopping cart and checkout", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 18
 this.ScenarioInitialize(scenarioInfo);
@@ -214,13 +214,13 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("I login with valid credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 20
- testRunner.And(string.Format("I add an item - \'{0}\' in the \'{1}\' menu to shopping cart", itemName1, menuName1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("I add an item - \'{0}\' in the \'{1}\' menu to shopping cart", itemNumber1, menuName1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 21
  testRunner.And("I click on Continue shopping button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
 #line hidden
 #line 22
- testRunner.And(string.Format("I add an item - \'{0}\' in the \'{1}\' menu to shopping cart", itemName2, menuName2), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+ testRunner.And(string.Format("I add an item - \'{0}\' in the \'{1}\' menu to shopping cart", itemNumber2, menuName2), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
 #line hidden
 #line 23
  testRunner.When("I proceed to checkout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -242,13 +242,13 @@ this.ScenarioInitialize(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("shoppingcart")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Dresses")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:menuName1", "Dresses")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:itemName1", "item1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:itemNumber1", "1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:menuName2", "T-shirts")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:itemName2", "item2")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:itemNumber2", "1")]
         public virtual void AddMultipleItemsToShoppingCartAndCheckout_Dresses()
         {
 #line 18
-this.AddMultipleItemsToShoppingCartAndCheckout("Dresses", "item1", "T-shirts", "item2", ((string[])(null)));
+this.AddMultipleItemsToShoppingCartAndCheckout("Dresses", "1", "T-shirts", "1", ((string[])(null)));
 #line hidden
         }
     }

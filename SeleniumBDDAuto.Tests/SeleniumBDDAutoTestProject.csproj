@@ -87,9 +87,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Hooks\GeneralHooks.cs" />
+    <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Pages\DashboardPage.cs" />
+    <Compile Include="Pages\DressesPage.cs" />
     <Compile Include="Pages\LoginPage.cs" />
+    <Compile Include="Pages\ShoppingCartSummaryPage.cs" />
+    <Compile Include="Pages\SingleDressPage.cs" />
     <Compile Include="Steps\CartCheckoutSteps.cs" />
     <Compile Include="Steps\LoginSteps.cs" />
     <Compile Include="UnitTest1.cs" />

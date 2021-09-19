@@ -24,8 +24,8 @@ namespace SeleniumBDDAuto.Tests.Hooks
         public void RunBeforeScenario()
         {
             _driver = new ChromeDriver();
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(10);
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(50);
+            _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(30);
             _driver.Manage().Window.Maximize();
 
             _scenarioContext.Add("currentDriver", _driver);
