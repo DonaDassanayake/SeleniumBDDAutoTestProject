@@ -20,6 +20,8 @@ namespace SeleniumBDDAuto.Tests.Pages
 
         protected IWebElement error => _driver.FindElement(By.XPath("//div[@class='alert alert-danger']//li"));
        
+        [FindsBy(How =How.Id, Using = "email")]
+        public IWebElement username { get; set; }
 
         public LoginPage(IWebDriver driver)
         {
@@ -34,7 +36,7 @@ namespace SeleniumBDDAuto.Tests.Pages
 
         public void EnterUsernameAndPassword(User user)
         {
-            usernameTxtBox.SendKeys(user.Username);
+            username.SendKeys(user.Username);
             passwordTxtBox.SendKeys(user.Password);
         }        
 

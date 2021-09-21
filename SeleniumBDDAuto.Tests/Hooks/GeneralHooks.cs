@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 using Allure.Commons;
 using NLog;
+using NUnit.Framework;
+using System.IO;
+using System.Diagnostics;
 
 namespace SeleniumBDDAuto.Tests.Hooks
 {
@@ -22,6 +25,13 @@ namespace SeleniumBDDAuto.Tests.Hooks
         public GeneralHooks(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
+            _allureLifecycle = AllureLifecycle.Instance;
+        }
+
+        [OneTimeSetUp]
+        public void SetupForAllure()
+        {
+            Environment.CurrentDirectory = Path.GetDirectoryName(GetType().Assembly.Location);
         }
 
         [BeforeScenario]
@@ -38,7 +48,42 @@ namespace SeleniumBDDAuto.Tests.Hooks
         [AfterScenario]
         public void RunAfterScenario()
         {
+            Logger.Info("WebDriver termination.");
             _driver.Quit();
+
+           // AllureHackForScenarioOutlineTests();
+        }
+
+        [AfterTestRun]
+        public static void AfterTests()
+        {
+            CloseChromeDriverProcesses();
+        }
+
+        private static void CloseChromeDriverProcesses()
+        {
+            var chromeDriverProcesses = Process.GetProcesses().
+                Where(pr => pr.ProcessName == "chromedriver");
+
+            if (chromeDriverProcesses.Count() == 0)
+            {
+                return;
+            }
+
+            foreach (var process in chromeDriverProcesses)
+            {
+                process.Kill();
+            }
+        }
+
+        private void AllureHackForScenarioOutlineTests()
+        {
+            _scenarioContext.TryGetValue(out TestResult testresult);
+            _allureLifecycle.UpdateTestCase(testresult.uuid, tc =>
+            {
+                tc.name = _scenarioContext.ScenarioInfo.Title;
+                tc.historyId = Guid.NewGuid().ToString();
+            });
         }
     }
 }
