@@ -115,6 +115,7 @@
     <Compile Include="Pages\DashboardPage.cs" />
     <Compile Include="Pages\DressesPage.cs" />
     <Compile Include="Pages\LoginPage.cs" />
+    <Compile Include="Pages\Menubar.cs" />
     <Compile Include="Pages\ShoppingCartSummaryPage.cs" />
     <Compile Include="Pages\SingleDressPage.cs" />
     <Compile Include="Steps\CartCheckoutSteps.cs" />
@@ -128,6 +129,7 @@
     <None Include="app.config" />
     <None Include="Features\CartCheckout.feature" />
     <None Include="Features\Login.feature" />
+    <None Include="NLog.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

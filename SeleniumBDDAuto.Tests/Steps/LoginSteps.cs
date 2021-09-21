@@ -14,6 +14,7 @@ namespace SeleniumBDDAuto.Tests.Steps
     {
         private IWebDriver _driver;
         private ScenarioContext _scenarioContext;
+
         public User user { get; private set; }
         public LoginSteps(ScenarioContext scenarioContext)
         {

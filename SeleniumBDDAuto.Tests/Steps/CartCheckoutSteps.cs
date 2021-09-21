@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NLog;
 using OpenQA.Selenium;
 using SeleniumBDDAuto.Tests.Models;
 using SeleniumBDDAuto.Tests.Pages;
@@ -15,7 +16,7 @@ namespace SeleniumBDDAuto.Tests.Steps
         public User user { get; private set; }
         public ShoppingCart shoppingCart { get; private set; }
         private int itemCount;
-
+        protected static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         public CartCheckoutSteps(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
@@ -25,6 +26,8 @@ namespace SeleniumBDDAuto.Tests.Steps
         [Given(@"I login with valid credentials")]
         public void GivenILoginWithValidCredentials()
         {
+            Logger.Info("Login to the application");
+
             LoginPage loginPage = new LoginPage(_driver);
             loginPage.OpenLoginURL();
 
