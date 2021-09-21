@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
+using Allure.Commons;
+using NLog;
 
 namespace SeleniumBDDAuto.Tests.Hooks
 {
@@ -14,6 +16,8 @@ namespace SeleniumBDDAuto.Tests.Hooks
     {
         private ScenarioContext _scenarioContext;
         private IWebDriver _driver;
+        private AllureLifecycle _allureLifecycle;
+        protected static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         public GeneralHooks(ScenarioContext scenarioContext)
         {
