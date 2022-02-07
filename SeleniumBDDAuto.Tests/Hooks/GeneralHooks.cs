@@ -37,7 +37,9 @@ namespace SeleniumBDDAuto.Tests.Hooks
         [BeforeScenario]
         public void RunBeforeScenario()
         {
-            _driver = new ChromeDriver();
+            ChromeOptions option = new ChromeOptions();
+            option.AddArgument("--headless");
+            _driver = new ChromeDriver(option);
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(50);
             _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(30);
             _driver.Manage().Window.Maximize();
