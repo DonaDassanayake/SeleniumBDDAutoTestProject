@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NLog;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using SeleniumBDDAuto.Tests.Models;
@@ -14,12 +15,13 @@ namespace SeleniumBDDAuto.Tests.Steps
     {
         private IWebDriver _driver;
         private ScenarioContext _scenarioContext;
-
+        protected static readonly Logger logger = LogManager.GetCurrentClassLogger();
         public User user { get; private set; }
         public LoginSteps(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
             _driver = _scenarioContext.Get<IWebDriver>("currentDriver");
+            logger.Info("Hello Donaaaaaaaaaaaaaa", "Earth");
         }
 
         [Given(@"I navigate to the Login Page")]

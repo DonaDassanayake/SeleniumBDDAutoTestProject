@@ -51,7 +51,8 @@ namespace SeleniumBDDAuto.Tests.Hooks
             Logger.Info("WebDriver termination.");
             _driver.Quit();
 
-           // AllureHackForScenarioOutlineTests();
+            // AllureHackForScenarioOutlineTests();
+            NLog.LogManager.Shutdown();
         }
 
         [AfterTestRun]
