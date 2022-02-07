@@ -52,7 +52,12 @@ namespace SeleniumBDDAuto.Tests.Steps
             Assert.AreEqual(actualPageTitle, menuName, true);
 
             DressesPage dressesPage = new DressesPage(_driver);
-           // dressesPage.GetPrice(itemNumber);
+            //Get Price
+            string price = dressesPage.GetPrice(itemNumber);
+            string priceAmt = (price).Trim('$');
+            double pricevalue = Convert.ToDouble(priceAmt);
+            _scenarioContext.Add("item _" + itemNumber + "_price", priceAmt);
+            //Select Item
             dressesPage.ClickItem(itemNumber);
             
 

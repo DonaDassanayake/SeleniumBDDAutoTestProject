@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\SpecFlow.Plus.LivingDocPlugin.3.9.57\build\SpecFlow.Plus.LivingDocPlugin.props" Condition="Exists('..\packages\SpecFlow.Plus.LivingDocPlugin.3.9.57\build\SpecFlow.Plus.LivingDocPlugin.props')" />
   <Import Project="..\packages\NUnit.3.13.2\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.13.2\build\NUnit.props')" />
   <Import Project="..\packages\SpecFlow.MsTest.3.9.22\build\SpecFlow.MsTest.props" Condition="Exists('..\packages\SpecFlow.MsTest.3.9.22\build\SpecFlow.MsTest.props')" />
   <Import Project="..\packages\SpecFlow.Tools.MsBuild.Generation.3.9.22\build\SpecFlow.Tools.MsBuild.Generation.props" Condition="Exists('..\packages\SpecFlow.Tools.MsBuild.Generation.3.9.22\build\SpecFlow.Tools.MsBuild.Generation.props')" />
@@ -57,6 +58,12 @@
     <Reference Include="Google.Protobuf, Version=3.7.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.7.0\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
+    <Reference Include="LivingDoc.Dtos, Version=3.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SpecFlow.Plus.LivingDocPlugin.3.9.57\lib\net461\LivingDoc.Dtos.dll</HintPath>
+    </Reference>
+    <Reference Include="LivingDoc.SpecFlowPlugin, Version=3.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SpecFlow.Plus.LivingDocPlugin.3.9.57\lib\net461\LivingDoc.SpecFlowPlugin.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.2.1.2\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
@@ -112,16 +119,21 @@
     <Compile Include="Hooks\GeneralHooks.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Pages\BasePage.cs" />
     <Compile Include="Pages\DashboardPage.cs" />
     <Compile Include="Pages\DressesPage.cs" />
+    <Compile Include="Pages\HomePage.cs" />
+    <Compile Include="Pages\ItemQucikViewPage.cs" />
     <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Pages\Menubar.cs" />
     <Compile Include="Pages\ShoppingCartSummaryPage.cs" />
     <Compile Include="Pages\SingleDressPage.cs" />
     <Compile Include="Steps\CartCheckoutSteps.cs" />
     <Compile Include="Steps\LoginSteps.cs" />
+    <Compile Include="Steps\ShoppingCartSteps.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\Helper.cs" />
     <Compile Include="Utils\Resources.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -129,8 +141,13 @@
     <None Include="app.config" />
     <None Include="Features\CartCheckout.feature" />
     <None Include="Features\Login.feature" />
+    <None Include="Features\ShoppingCart.feature" />
     <None Include="NLog.config" />
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
+    <None Include="specflow.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AllureReports\" />
@@ -151,10 +168,13 @@
     <Error Condition="!Exists('..\packages\SpecFlow.MsTest.3.9.22\build\SpecFlow.MsTest.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SpecFlow.MsTest.3.9.22\build\SpecFlow.MsTest.targets'))" />
     <Error Condition="!Exists('..\packages\Selenium.WebDriver.ChromeDriver.93.0.4577.6300\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.ChromeDriver.93.0.4577.6300\build\Selenium.WebDriver.ChromeDriver.targets'))" />
     <Error Condition="!Exists('..\packages\NUnit.3.13.2\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.13.2\build\NUnit.props'))" />
+    <Error Condition="!Exists('..\packages\SpecFlow.Plus.LivingDocPlugin.3.9.57\build\SpecFlow.Plus.LivingDocPlugin.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SpecFlow.Plus.LivingDocPlugin.3.9.57\build\SpecFlow.Plus.LivingDocPlugin.props'))" />
+    <Error Condition="!Exists('..\packages\SpecFlow.Plus.LivingDocPlugin.3.9.57\build\SpecFlow.Plus.LivingDocPlugin.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SpecFlow.Plus.LivingDocPlugin.3.9.57\build\SpecFlow.Plus.LivingDocPlugin.targets'))" />
   </Target>
   <Import Project="..\packages\MSTest.TestAdapter.2.1.2\build\net45\MSTest.TestAdapter.targets" Condition="Exists('..\packages\MSTest.TestAdapter.2.1.2\build\net45\MSTest.TestAdapter.targets')" />
   <Import Project="..\packages\SpecFlow.3.9.22\build\SpecFlow.targets" Condition="Exists('..\packages\SpecFlow.3.9.22\build\SpecFlow.targets')" />
   <Import Project="..\packages\SpecFlow.Tools.MsBuild.Generation.3.9.22\build\SpecFlow.Tools.MsBuild.Generation.targets" Condition="Exists('..\packages\SpecFlow.Tools.MsBuild.Generation.3.9.22\build\SpecFlow.Tools.MsBuild.Generation.targets')" />
   <Import Project="..\packages\SpecFlow.MsTest.3.9.22\build\SpecFlow.MsTest.targets" Condition="Exists('..\packages\SpecFlow.MsTest.3.9.22\build\SpecFlow.MsTest.targets')" />
   <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.93.0.4577.6300\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.93.0.4577.6300\build\Selenium.WebDriver.ChromeDriver.targets')" />
+  <Import Project="..\packages\SpecFlow.Plus.LivingDocPlugin.3.9.57\build\SpecFlow.Plus.LivingDocPlugin.targets" Condition="Exists('..\packages\SpecFlow.Plus.LivingDocPlugin.3.9.57\build\SpecFlow.Plus.LivingDocPlugin.targets')" />
 </Project>

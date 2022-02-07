@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace SeleniumBDDAuto.Tests.Pages
 {
-    public class LoginPage
+    public class LoginPage : BasePage
     {
-        private readonly IWebDriver _driver;
+        //private readonly IWebDriver _driver;
 
         protected IWebElement usernameTxtBox => _driver.FindElement(By.Id("email"));
         protected IWebElement passwordTxtBox => _driver.FindElement(By.Id("passwd"));
@@ -23,7 +23,7 @@ namespace SeleniumBDDAuto.Tests.Pages
         [FindsBy(How =How.Id, Using = "email")]
         public IWebElement username { get; set; }
 
-        public LoginPage(IWebDriver driver)
+        public LoginPage(IWebDriver driver): base(driver)
         {
             _driver = driver;
             PageFactory.InitElements(_driver, this);
@@ -36,6 +36,7 @@ namespace SeleniumBDDAuto.Tests.Pages
 
         public void EnterUsernameAndPassword(User user)
         {
+            Helper.WaitUntilElementVisible(_driver, By.Id("email"));
             username.SendKeys(user.Username);
             passwordTxtBox.SendKeys(user.Password);
         }        
